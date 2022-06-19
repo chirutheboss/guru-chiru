@@ -151,7 +151,7 @@ def get_readable_message():
                 except:
                     pass
                 msg += f"\n<code>/{BotCommands.CancelMirror} {download.gid()}</code>"
-                msg += f"\n<b>User:</b> ️<code>{download.message.from_user.first_name}</code>️"
+                msg += f"\n<b>User:</b> ️<code>{download.message.from_user.first_name}</code>️ <code>{download.message.from_user.id}</code>"
                 msg += f"\n<b>Time Elapsed: </b>{get_readable_time(time() - download.message.date.timestamp())}"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>Size: </b>{download.size()}"
