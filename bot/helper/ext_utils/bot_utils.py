@@ -141,14 +141,18 @@ def get_readable_message():
                 try:
                     msg += f"\n<b>Seeders:</b> {download.aria_download().num_seeders}" \
                            f" | <b>Peers:</b> {download.aria_download().connections}"
+                    msg += f"\n<b>Using:</b> <code>Aria2c v1.35.0</code>"
                 except:
                     pass
                 try:
                     msg += f"\n<b>Seeders:</b> {download.torrent_info().num_seeds}" \
                            f" | <b>Leechers:</b> {download.torrent_info().num_leechs}"
+                    msg += f"\n<b>Using:</b> <code>qBittorrent v4.4.2</code>"
                 except:
                     pass
                 msg += f"\n<code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b>User:</b> ️<code>{download.message.from_user.first_name}</code>️"
+                msg += f"\n<b>Time Elapsed: </b>{get_readable_time(time() - download.message.date.timestamp())}"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>Size: </b>{download.size()}"
                 msg += f"\n<b>Speed: </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
