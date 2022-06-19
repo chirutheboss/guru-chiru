@@ -1,3 +1,4 @@
+from time import sleep
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext, CallbackQueryHandler
 from telegram.message import Message
