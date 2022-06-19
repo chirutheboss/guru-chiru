@@ -7,7 +7,7 @@ from datetime import datetime
 import time
 import pytz
 from bot import *
-from bot.helper.ext_utils.bot_utils import get_readable_message, get_readable_file_size, get_readable_time, MirrorStatus, progress_bar, setInterval
+from bot.helper.ext_utils.bot_utils import get_readable_message, get_readable_file_size, get_readable_time, MirrorStatus, setInterval
 from telegram.error import TimedOut, BadRequest
 
 
