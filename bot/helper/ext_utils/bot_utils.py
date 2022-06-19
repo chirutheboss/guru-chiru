@@ -150,7 +150,7 @@ def get_readable_message():
                     msg += f"\n<b>Using:</b> <code>qBittorrent v4.4.2</code>"
                 except:
                     pass
-                msg += f"\n<b>User:</b> ️<code>{download.message.from_user.first_name}</code>️<b>id: </b><code>{download.message.from_user.id}</code>"
+                msg += f"\n<b>User:</b> ️<code>{download.message.from_user.first_name}</code>️<b> id: </b><code>{download.message.from_user.id}</code>"
                 msg += f"\n<b>Time Elapsed: </b>{get_readable_time(time() - download.message.date.timestamp())}"
                 msg += f"\n<b>cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
