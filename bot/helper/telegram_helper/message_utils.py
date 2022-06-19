@@ -14,13 +14,18 @@ from bot import AUTO_DELETE_MESSAGE_DURATION, LOGGER, status_reply_dict, status_
 from bot.helper.ext_utils.bot_utils import get_readable_message, setInterval
 
 
-def sendMessage(text: str, bot, update: Update):
+def sendMessage(text: str, bot, message: Message):
     try:
-        return bot.send_message(update.message.chat_id,
-                            reply_to_message_id=update.message.message_id,
-                            text=text, disable_web_page_preview=True, allow_sending_without_reply=True, parse_mode='HTMl')
+        return bot.sendMessage(message.chat_id,
+                            reply_to_message_id=message.message_id,
+                            text=text, allow_sending_without_reply=True, parse_mode='HTMl', disable_web_page_preview=True)
+    except RetryAfter as r:
+        LOGGER.warning(str(r))
+        sleep(r.retry_after * 1.5)
+        return sendMessage(text, bot, message)
     except Exception as e:
         LOGGER.error(str(e))
+        return
 
 def sendMarkup(text: str, bot, update: Update, reply_markup: InlineKeyboardMarkup):
     try:
